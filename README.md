@@ -12,7 +12,7 @@
 ## Compiling and running the application
 ```bash
 git clone https://github.com/Dogukanguven/objectTrackingApp.git
-cd objectTracking
+cd objectTrackingApp
 mkdir build && cd build
 cmake ..
 make
