@@ -10,13 +10,14 @@
 ### 6- KCF
 
 ## Compiling and running the application
-> git clone .....
-> cd objectTracking
-> mkdir build && cd build
-> cmake ..
-> make
-> ./TrackingApp -v ../testData/test1.mp4 -t CSRT
-
+```bash
+git clone .....
+cd objectTracking
+mkdir build && cd build
+cmake ..
+make
+./TrackingApp -v ../testData/test1.mp4 -t CSRT
+```
 
 ## Result
 ![Result gif](/result/result.gif "Result")
