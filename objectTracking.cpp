@@ -6,7 +6,6 @@
 using namespace std;
 using namespace cv;
 
-
 void createTracker(string *trackerType, Ptr<cv::legacy::Tracker> *tracker){
     if (*trackerType == "KCF"){
         *tracker = legacy::TrackerKCF::create();
@@ -38,7 +37,7 @@ int main(int argc, char** argv){
     string trackerType = "KCF";
     char* video_input = (char*) "0";
     
-    // Argumanlarin ayristirilmasi edilmesi.
+    // Argümanların ayrıştırılması.
     for (int idx = 2; idx < argc; idx+=2){
         if(strcmp("-v", argv[idx-1]) == 0){
             video_input = argv[idx];
@@ -56,7 +55,7 @@ int main(int argc, char** argv){
         }
     }
 
-    // Goruntunun acilmasi ve ilk frame'in okunmasi.
+    // Görüntünün açılması ve ilk frame'in okunması.
     VideoCapture *cap;
     Mat frame;
     if(cameraOn){
@@ -68,20 +67,20 @@ int main(int argc, char** argv){
     }
     cap->read(frame);
     
-    // Takip algoritmasinin yuklenmesi.
+    // Takip algoritmasının yüklenmesi.
     Ptr<cv::legacy::Tracker> tracker;
     createTracker(&trackerType, &tracker);
 
-    // Takip algoritmasinin ilk frame icerisinden secilen nesne ile baslatilmasi.
+    // Takip algoritmasının, ilk frame içerisinden seçilen nesne ile başlatılması.
     Rect2d rect = selectROI(frame);
     tracker->init(frame, rect);
 
-    // Frame dongusu.
+    // Frame döngüsü.
     while(cap->read(frame)){
-        // Takip edilen nesnenin yeni konumunun guncellenmesi.
+        // Takip edilen nesnenin yeni konumunun güncellenmesi.
         bool status = tracker->update(frame, rect);
 
-        // Takip edilen nesnenin yeni konumunun cizdirilmesi.
+        // Takip edilen nesnenin yeni konumunun çizdirilmesi.
         if (status){
             rectangle(frame, rect, Scalar(255, 0, 0), 3, 1);
         }
@@ -89,13 +88,13 @@ int main(int argc, char** argv){
             putText(frame, "Nesne Kaybedildi!", Point(20, frame.size[0]-20), FONT_HERSHEY_COMPLEX, 1, Scalar(0, 0, 255), 2);
         }
 
-        // Takip algoritmasinin frame'e yazdirilmasi.
+        // Takip algoritmasının frame'e yazdırılması.
         putText(frame, trackerType, Point(0, 30), FONT_HERSHEY_COMPLEX, 1, Scalar(0, 255, 0), 2);
 
-        // Frame'in gosterilmesi.
+        // Frame'in gösterilmesi.
         imshow("Takip_Uygulamasi", frame);
 
-        // ESC tusunun cikis olarak belirlenmesi..
+        // ESC tuşunun çıkış olarak belirlenmesi.
         if (waitKey(1) == 27) 
             break;
     }
