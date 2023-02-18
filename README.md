@@ -2,12 +2,12 @@
 
 ## Tracking algorithms
 
-### 1- MEDIANFLOW
-### 2- BOOSTING
-### 3- MOSSE
-### 4- CSRT
-### 5- TLD
-### 6- KCF
+#### 1- MEDIANFLOW
+#### 2- BOOSTING
+#### 3- MOSSE
+#### 4- CSRT
+#### 5- TLD
+#### 6- KCF
 
 ## Compiling and running the application
 ```bash
