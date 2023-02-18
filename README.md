@@ -11,7 +11,7 @@
 
 ## Compiling and running the application
 ```bash
-git clone .....
+git clone https://github.com/Dogukanguven/objectTrackingApp.git
 cd objectTracking
 mkdir build && cd build
 cmake ..
