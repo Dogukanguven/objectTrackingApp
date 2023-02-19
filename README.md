@@ -20,4 +20,4 @@ make
 ```
 
 ## Result
-![Result gif](/result/result.gif "Result")
+![Output gif](/output/output.gif "Output")
