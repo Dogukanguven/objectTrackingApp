@@ -19,5 +19,5 @@ make
 ./TrackingApp -v ../testData/test1.mp4 -t CSRT
 ```
 
-## Result
+## Output
 ![Output gif](/output/output.gif "Output")
